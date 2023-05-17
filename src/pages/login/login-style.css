@@ -1,0 +1,217 @@
+.main {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 90px 0 90px 0;
+    background: linear-gradient(#24243e, #302b63, #0f0c29);
+
+}
+
+.sub-main {
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    width: 35%;
+    padding-top: 30px;
+    border-radius: 60px;
+    background-color: rgb(216, 231, 239);
+}
+
+.imgs {
+    padding-top: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+.container-image {
+    background-color: rgb(223, 221, 221);
+    border-radius: 150px;
+    align-items: center;
+    display: flex;
+    height: 134px;
+    width: 170px;
+}
+
+.profile {
+    height: 100px;
+    width: 100px;
+    border-radius: 130px;
+}
+
+input {
+    width: 300px;
+    height: 50px;
+    border-radius: 60px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0px 0px 14px 0px #d4d1d1;
+    background-color: #fff;
+}
+
+.email {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    padding: 14px 0 0 25px;
+}
+
+.name {
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+.second-input {
+    padding: 20px;
+}
+
+button {
+    width: 380px;
+    height: 50px;
+    border-radius: 60px;
+    background-color: #00d4ff;
+    color: white;
+    font-size: 25px;
+    border: none;
+}
+
+.login-button {
+    padding-top: 15px;
+
+}
+
+.link {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+a {
+    color: blue;
+}
+
+
+
+/*tablets and phone*/
+
+@media only screen and (max-width: 768px) {
+    .sub-main {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .sub-main {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .sub-main {
+        width: 90%;
+    }
+}
+
+.imgs {
+    padding-top: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+.container-image {
+    background-color: rgb(223, 221, 221);
+    border-radius: 150px;
+    align-items: center;
+    display: flex;
+    height: 115px;
+    width: 115px;
+}
+
+.profile {
+    height: 100px;
+    width: 100px;
+    border-radius: 130px;
+}
+
+input {
+    width: 300px;
+    height: 50px;
+    border-radius: 60px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0px 0px 25px 0px #d4d1d1;
+    background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+    input {
+        width: 250px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    input {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    input {
+        width: 150px;
+    }
+}
+
+.email {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    padding: 14px 0 0 25px;
+}
+
+.name {
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+.second-input {
+    padding: 20px;
+}
+
+button {
+    width: 380px;
+    height: 50px;
+    border-radius: 60px;
+    background-color: #00d4ff;
+    color: white;
+    font-size: 25px;
+    border: none;
+}
+
+@media only screen and (max-width: 768px) {
+    button {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    button {
+        width: 250px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    button {
+        width: 200px;
+    }
+}
+
+.login-button {
+    padding-top: 15px;
+}
+
+.link {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+a {
+    color: blue;
+}
