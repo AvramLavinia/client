@@ -31,7 +31,7 @@ const Login = () => {
                   className='name'></input>
               </div>
               <div className='login-button'>
-                <button>Login</button>
+                <button className='button2'>Login</button>
               </div>
               <p className='link'>
                 <a href='ForgotPassword'>Forgot Password? </a> Or{" "}

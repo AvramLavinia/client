@@ -1,9 +1,9 @@
 import React from "react";
-import "./home-style.css";
+import "./items.css";
 import Menu from "../../components/meniu/Menu";
 import Container from "../../components/meniu/Container";
 
-const Home = () => {
+const Items = () => {
   return (
     <div className='app'>
       <Menu />
@@ -11,4 +11,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Items;

@@ -51,7 +51,7 @@ input {
     padding: 0px;
 }
 
-button {
+.button1 {
     width: 380px;
     height: 50px;
     border-radius: 60px;
@@ -140,7 +140,7 @@ input {
     padding: 20px;
 }
 
-button {
+.button1 {
     width: 380px;
     height: 50px;
     border-radius: 60px;
@@ -151,19 +151,19 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
-    button {
+    .button1 {
         width: 300px;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    button {
+    .button1 {
         width: 250px;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    button {
+    .button1 {
         width: 200px;
     }
 }

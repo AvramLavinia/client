@@ -23,7 +23,7 @@ const NewPassword = () => {
               className='name4'></input>
           </div>
           <div className='send-button'>
-            <button>Send </button>
+            <button className='button4'>Send </button>
           </div>
         </div>
       </div>

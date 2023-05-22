@@ -17,7 +17,7 @@ const ForgotPassword = () => {
           </div>
 
           <div className='forgot-button'>
-            <button>Send reset code</button>
+            <button className='button3'>Send reset code</button>
 
             <p className='link3'>
               <a href='NewPassword'> New Password</a>

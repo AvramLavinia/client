@@ -30,24 +30,47 @@ const Menu = () => {
     <menu>
       <img src={logo} alt='' />
       <ul id='mainMenu'>
-        <Icon icon={<FaDelicious />} />
-        <Icon icon={<FaPortrait />} />
-        <Icon icon={<FaFile />} />
-        <Icon icon={<FaKey />} />
-        <Icon icon={<FaHeartbeat />} />
+        <li>
+          <a href='Items'>
+            <FaDelicious />
+          </a>
+        </li>
+        <li>
+          <a href='Profile'>
+            <FaPortrait />
+          </a>
+        </li>
+        <li>
+          <a href='Notes'>
+            <FaFile />
+          </a>
+        </li>
+        <li>
+          <a href='GeneratePassword'>
+            <FaKey />
+          </a>
+        </li>
+        <li>
+          <a href='Health'>
+            {" "}
+            <FaHeartbeat />{" "}
+          </a>
+        </li>
       </ul>
       <ul className='last'>
-        <Icon icon={<FaCog />} />
-        <Icon icon={<FaSignOutAlt />} />
+        <li>
+          <a href='Settings'>
+            <FaCog />
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <FaSignOutAlt />
+          </a>
+        </li>
       </ul>
     </menu>
   );
 };
-
-const Icon = ({ icon }) => (
-  <li>
-    <a href='#'>{icon}</a>
-  </li>
-);
 
 export default Menu;
