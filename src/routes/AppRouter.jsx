@@ -7,7 +7,6 @@ import ForgotPassword from "../pages/forgot_password/ForgotPassword";
 import NewPassword from "../pages/forgot_password/NewPassword";
 import GeneratePassword from "../pages/generatePass/GeneratePassword";
 import Items from "../pages/items/Items";
-import Profile from "../pages/profile/Profile";
 import Settings from "../pages/settings/Settings";
 import Notes from "../pages/notes/Notes";
 import Health from "../pages/health/Health";
@@ -25,7 +24,6 @@ const AppRouter = () => {
         <Route path='/NewPassword' element={<NewPassword />} />
         <Route path='/GeneratePassword' element={<GeneratePassword />} />
         <Route path='/Items' element={<Items />} />
-        <Route path='/Profile' element={<Profile />} />
         <Route path='/Settings' element={<Settings />} />
         <Route path='/Notes' element={<Notes />} />
         <Route path='/Health' element={<Health />} />

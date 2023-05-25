@@ -35,13 +35,44 @@
     font-size: 1.1em;
 }
 
-.containerHe .strengthMeter::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 100%;
-    transition: 0.5s;
+.containerHe .strengthMeter {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    display: none;
+}
+
+.containerHe.password-entered .strengthMeter {
+    display: block;
+}
+
+.containerHe.weak .strengthMeter {
+    width: 10%;
     background: #f00;
+    filter: drop-shadow(0 0 5px #f00) drop-shadow(0 0 10px #f00) drop-shadow(0 0 20px #f00);
+}
+
+.containerHe.medium .strengthMeter {
+    width: 50%;
+    background: #ffa500;
+    filter: drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10px #ffa500) drop-shadow(0 0 20px #ffa500);
+}
+
+.containerHe.strong .strengthMeter {
+    width: 80%;
+    background: #0f0;
+    filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 10px #0f0) drop-shadow(0 0 20px #0f0);
+}
+
+.containerHe .strengthText {
+    color: #fff;
+    transition: 0.5s;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.containerHe .passwordStrengthLabel {
+    filter: drop-shadow(0 0 5px #f099f0);
 }
 
 .show {
@@ -59,7 +90,7 @@
 }
 
 .show::before {
-    content: 'Show';
+    content: "Show";
     font-size: 0.6em;
     color: #fff;
     letter-spacing: 0.15em;

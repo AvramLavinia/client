@@ -6,7 +6,6 @@ import {
   FaDelicious,
   FaHeartbeat,
   FaKey,
-  FaPortrait,
   FaCog,
   FaFile,
   FaSignOutAlt,
@@ -36,11 +35,6 @@ const Menu = () => {
           </a>
         </li>
         <li>
-          <a href='Profile'>
-            <FaPortrait />
-          </a>
-        </li>
-        <li>
           <a href='Notes'>
             <FaFile />
           </a>
@@ -56,13 +50,13 @@ const Menu = () => {
             <FaHeartbeat />{" "}
           </a>
         </li>
-      </ul>
-      <ul className='last'>
         <li>
           <a href='Settings'>
             <FaCog />
           </a>
         </li>
+      </ul>
+      <ul className='last'>
         <li>
           <a href='#'>
             <FaSignOutAlt />
