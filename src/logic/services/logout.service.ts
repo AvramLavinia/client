@@ -13,9 +13,13 @@ const logoutService = () => {
     //Auth value in redux store
     dispatch(loggedOut());
     dispatch(deleteUser());
+    dispatch(resetPassword());
   };
 
   return { logout };
 };
 
 export default logoutService;
+function resetPassword(): any {
+  throw new Error("Function not implemented.");
+}
