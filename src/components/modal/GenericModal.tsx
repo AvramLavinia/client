@@ -24,8 +24,8 @@ const GenericModal = ({
 };
 
 const modalStyle: React.CSSProperties = {
-  width: "300px",
-  height: "300px",
+  position: "absolute",
+  margin: "auto",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

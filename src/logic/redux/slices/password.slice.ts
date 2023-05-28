@@ -2,33 +2,40 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../redux-hooks";
 
 export type PasswordState = {
-  id: string | null;
+  id: string;
+  platform: string;
+  email: string;
+  password: string;
 };
 
-const initialState: PasswordState = {
-  id: null,
-};
+const initialState: PasswordState[] = [];
 
 export const passwordSlice = createSlice({
   name: "password",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<PasswordState>) => {
-      return { ...state, ...action.payload };
+    setPasswords: (state, action: PayloadAction<PasswordState[]>) => {
+      return [...state, ...action.payload];
     },
-    updateUser: (state, action: PayloadAction<Partial<PasswordState>>) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
+    addPassword: (state, action: PayloadAction<PasswordState>) => {
+      return [...state, action.payload];
     },
-    deleteUser: (state) => {
-      return initialState;
+    updatePassword: (state, action: PayloadAction<PasswordState>) => {
+      return state.map((value) => {
+        if (value.id === action.payload.id) {
+          return { ...value, ...action.payload };
+        }
+        return value;
+      });
+    },
+    deletePassword: (state, action: PayloadAction<{ id: string }>) => {
+      return state.filter((value) => value.id !== action.payload.id);
     },
   },
 });
 
-export const { setUser, updateUser, deleteUser } = passwordSlice.actions;
-export const selectUserValue = (state: RootState) => state.user;
+export const { setPasswords, deletePassword, updatePassword, addPassword } =
+  passwordSlice.actions;
+export const selectPasswordValue = (state: RootState) => state.password;
 
 export default passwordSlice.reducer;

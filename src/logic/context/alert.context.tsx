@@ -36,6 +36,7 @@ const AlertProvider = (props: any) => {
               paddingX: "10px",
               fontWeight: "700",
               fontSize: "20px",
+              zIndex: 1000000,
             }}
           >
             {alert.description}

@@ -3,22 +3,34 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { TextInputProps } from "./TextInput.type";
 
 const PasswordTextInput = (props: TextInputProps) => {
-  const { type, defaultLabel, onChangeText, value, validate } = props;
+  const {
+    type,
+    defaultLabel,
+    onChangeText,
+    value,
+    validate,
+    style,
+    disable = false,
+    inputStylePasword,
+  } = props;
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
-    <div style={style}>
+    <div style={{ ...styleTextInput, ...style }}>
       <input
         style={{
           fontSize: 20,
           borderRadius: "10px",
           paddingLeft: 10,
+          border: "none",
+          ...inputStylePasword,
         }}
         type={showPassword ? "text" : "password"}
         placeholder={defaultLabel}
         onChange={(e: any) => onChangeText(e.target.value)}
         value={value}
+        disabled={disable}
       />
 
       <div
@@ -37,7 +49,7 @@ const PasswordTextInput = (props: TextInputProps) => {
   );
 };
 
-const style: React.CSSProperties = {
+const styleTextInput: React.CSSProperties = {
   width: "100%",
   height: 60,
   borderRadius: 10,

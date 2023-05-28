@@ -10,7 +10,6 @@ const BasicButton = (props: ButtonType) => {
       variant="contained"
       onClick={() => {
         if (!loading) {
-          console.log("Press the button");
           !loading && onClick();
         }
       }}

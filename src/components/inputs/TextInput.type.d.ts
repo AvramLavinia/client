@@ -18,4 +18,7 @@ export type TextInputProps = {
   validate?: boolean;
   onPress?: Function;
   disable?: boolean;
+  style?: React.CSSProperties;
+  inputStylePasword?: React.CSSProperties;
+  icon?: React.ReactElement;
 };

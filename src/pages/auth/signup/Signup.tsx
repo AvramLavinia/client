@@ -3,11 +3,12 @@ import "./signup-style.css";
 import "../../../index.css";
 import TextInput from "../../../components/inputs/TextInput";
 import PasswordTextInput from "../../../components/inputs/PasswordTextInput";
-import registerService from "../../../logic/services/register.service";
+import RegisterService from "../../../logic/services/register.service";
 import { UseAppDispatch } from "../../../logic/redux/redux-hooks";
 import { setAlert } from "../../../logic/redux/slices/alert.slice";
 import { useNavigate } from "react-router-dom";
 import BasicButton from "../../../components/buttons/BasicButton";
+import Auth2Modal from "../../../components/modal/Auth2Modal";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -17,9 +18,8 @@ const Signup = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rewritePassword, setRewritePassword] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
 
-  const { register } = registerService();
+  const { register, loading, setLoading } = RegisterService();
 
   const handleRegister = async () => {
     const verifyInputs = [name, email, password, rewritePassword].filter(
@@ -35,7 +35,15 @@ const Signup = () => {
     }
 
     setLoading(true);
-    await register({ name, email, password });
+
+    const validation = await register({ name, email, password });
+
+    if (typeof validation === "string") {
+      setEmail("");
+      setPassword("");
+      setRewritePassword("");
+      setName("");
+    }
 
     setLoading(false);
   };

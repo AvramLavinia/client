@@ -9,15 +9,37 @@ import { useNavigate } from "react-router-dom";
 import TextInput from "../../../components/inputs/TextInput";
 import PasswordTextInput from "../../../components/inputs/PasswordTextInput";
 import BasicButton from "../../../components/buttons/BasicButton";
+import Auth2Modal from "../../../components/modal/Auth2Modal";
 
 const Login = () => {
   const navigation = useNavigate();
-  const { login } = LoginService();
+  const { login, loading, setLoading } = LoginService();
   const dispatch = UseAppDispatch();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [accessToken, setAccessToken] = useState<string>("");
+
+  const handleLogin = async () => {
+    if (email !== "" && password !== "") {
+      setLoading(true);
+      const validation = await login({ email, password });
+
+      if (typeof validation === "string") {
+        setAccessToken(validation);
+        setOpenModal(true);
+
+        setEmail("");
+        setPassword("");
+      }
+
+      setLoading(false);
+    } else {
+      dispatch(setAlert({ description: "All fields must be required" }));
+    }
+  };
 
   return (
     <div id="page">
@@ -63,18 +85,7 @@ const Login = () => {
 
               <BasicButton
                 title={"Log in"}
-                onClick={async () => {
-                  if (email !== "" && password !== "") {
-                    setLoading(true);
-                    await login({ email, password });
-
-                    setLoading(false);
-                  } else {
-                    dispatch(
-                      setAlert({ description: "All fields must be required" })
-                    );
-                  }
-                }}
+                onClick={async () => await handleLogin()}
                 loading={loading}
               />
               <div className="link">
@@ -91,6 +102,15 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      <Auth2Modal
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+        data={{
+          email,
+          accessToken: accessToken,
+        }}
+      />
     </div>
   );
 };

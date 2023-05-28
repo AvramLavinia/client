@@ -1,44 +1,41 @@
 import { UseAppDispatch } from "./../redux/redux-hooks";
 
 import { setAlert } from "../redux/slices/alert.slice";
-import { loggedIn } from "../redux/slices/auth.slice";
-import { setUser } from "../redux/slices/user.slice";
 import { registerRequest } from "../requests/auth.requests";
 import { RegisterDto } from "../requests/auth.requests.types";
-import { useNavigate as UseNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const registerService = () => {
-  const navigate = UseNavigate();
+const RegisterService = () => {
   const dispatch = UseAppDispatch();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const register = async (object: RegisterDto) => {
-    await registerRequest(object)
+    return await registerRequest(object)
       .then(async (res) => {
         if (!res) {
+          setLoading(false);
           console.error("SOMETHING GOES WRONG!");
+          return false;
         } else {
-          localStorage.setItem("accessToken", res.data.accessToken);
-          //Auth value in redux store
+          setLoading(false);
           dispatch(
-            loggedIn({
-              isLogged: true,
-              accessToken: res.data.accessToken,
-              isLoading: false,
+            setAlert({
+              description:
+                "Account has been created.\n You can now login to app",
+              type: "SUCCESS",
             })
           );
-
-          //User value in redux store
-          dispatch(setUser(res.data));
-
-          navigate("/");
+          return res.data.accessToken;
         }
       })
       .catch((error) => {
+        setLoading(false);
         dispatch(setAlert({ description: error.response.data.message }));
+        return false;
       });
   };
 
-  return { register };
+  return { register, loading, setLoading };
 };
 
-export default registerService;
+export default RegisterService;

@@ -33,3 +33,16 @@ export const forgotPasswordRequest = async (
     }
   );
 };
+
+export const auth2ValidationRequest = async (
+  auth2token: string,
+  accessToken: string
+) => {
+  return await axios.post<authResponse>(
+    `/auth/auth2`,
+    { auth2token },
+    {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    }
+  );
+};
