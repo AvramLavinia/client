@@ -1,0 +1,54 @@
+.note.new {
+    background-color: #67d7cc;
+}
+
+textarea {
+    border: none;
+    resize: none;
+    background-color: #67d7cc;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.save {
+    background-color: #e1e1e1;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+}
+
+.save:hover {
+    background-color: #ededed;
+    cursor: pointer;
+}
+
+.note {
+    background-color: yellow;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    white-space: pre-wrap;
+}
+
+.notes-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.note-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-icon {
+    cursor: pointer;
+}

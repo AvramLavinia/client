@@ -15,3 +15,12 @@ export type authResponse = {
   name: string;
   email: string;
 };
+export type NameDto = {
+  name: string
+};
+
+export type NameResponse = {
+  id: string
+  name: string
+  email: string
+}
