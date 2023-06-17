@@ -31,6 +31,10 @@ export const passwordSlice = createSlice({
     deletePassword: (state, action: PayloadAction<{ id: string }>) => {
       return state.filter((value) => value.id !== action.payload.id);
     },
+
+    resetPassword: () => {
+      return initialState;
+    },
   },
 });
 
