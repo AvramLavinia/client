@@ -3,30 +3,37 @@ import "./settings.css";
 import "../../../index.css";
 import { useNavigate } from "react-router-dom";
 import NewNameService from "../../../logic/services/newName.service";
-import { UseAppDispatch, UseAppSelector } from "../../../logic/redux/redux-hooks";
+import {
+  UseAppDispatch,
+  UseAppSelector,
+} from "../../../logic/redux/redux-hooks";
 import { setAlert } from "../../../logic/redux/slices/alert.slice";
 import TextInput from "../../../components/inputs/TextInput";
 import BasicButton from "../../../components/buttons/BasicButton";
 import { selectUserValue } from "../../../logic/redux/slices/user.slice";
 
-
 const Settings = () => {
-
   const navigation = useNavigate();
-  const { newName, loading, setLoading } = NewNameService();
   const dispatch = UseAppDispatch();
-  const [name, setName] = useState<string>("");
   const user = UseAppSelector(selectUserValue);
-  const handleName = async () => {
-   
-      setLoading(true);
-      await newName({ name});
+  const { updateProfile, loading } = NewNameService();
 
-      setLoading(false);
-    
-      dispatch(setAlert({ description: "All fields must be required" }));
-    
+  const [name, setName] = useState<string>("");
+
+  const handleUpdateUser = async () => {
+    if (name.length > 0) {
+      updateProfile({
+        name,
+        id: user.id as string,
+        email: user.email as string,
+      }).then(() => {
+        setName("");
+      });
+    } else {
+      dispatch(setAlert({ description: "All fields must be field" }));
+    }
   };
+
   return (
     <div id="page">
       <div className="containerSet">
@@ -35,6 +42,13 @@ const Settings = () => {
         <div className="contSet">
           <h2 className="t1">Change Name</h2>
           <TextInput
+            type={"email"}
+            defaultLabel={"Your actual email"}
+            onChangeText={(text) => {}}
+            value={user.email as string}
+            disable={true}
+          />
+          <TextInput
             type={"text"}
             defaultLabel={"Your actual name"}
             onChangeText={(text) => {}}
@@ -42,27 +56,26 @@ const Settings = () => {
             disable={true}
           />
           <TextInput
-           type={"text"}
-           defaultLabel={"Your new name"}
-           onChangeText={(text) => setName(text)}
-           value={name}
+            type={"text"}
+            defaultLabel={"Your new name"}
+            onChangeText={(text) => setName(text)}
+            value={name}
           />
-          <BasicButton title={"Change Name"}
-            onClick={async () => await handleName()}
-            loading={loading} 
-            />
-          
+          <BasicButton
+            title={"Update profile"}
+            onClick={async () => await handleUpdateUser()}
+            loading={loading}
+          />
         </div>
-        <div className="contSet1">
+        <div className="contSet1" style={{ marginTop: 40 }}>
           <h2 className="t1">Change Password</h2>
-          <button className="butonChange" onClick={() => {
-                  navigation("/NewPassword");
-                }}>
-            Change Password
-          </button>
+          <BasicButton
+            title={"Change Password"}
+            onClick={() => {
+              navigation("/NewPassword");
+            }}
+          />
         </div>
-
-       
       </div>
     </div>
   );

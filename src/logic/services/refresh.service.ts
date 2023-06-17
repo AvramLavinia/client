@@ -11,8 +11,6 @@ const refreshService = () => {
   const refreshRequestService = async (accessToken: string) => {
     try {
       const result = await refreshRequest(accessToken);
-
-      console.log(result);
       if (result !== undefined) {
         const data = result.data;
         localStorage.setItem("accessToken", data.accessToken);

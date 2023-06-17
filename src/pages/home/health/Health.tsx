@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import "./health.css";
 import "../../../index.css";
+import PasswordTextInput from "../../../components/inputs/PasswordTextInput";
 
 const Health = () => {
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("weak");
-
-  const handlePasswordChange = (e: any) => {
-    const updatedPassword = e.target.value;
-    setPassword(updatedPassword);
-    checkPasswordStrength(updatedPassword);
-  };
 
   const checkPasswordStrength = (password: string) => {
     let strength = 0;
@@ -42,12 +37,6 @@ const Health = () => {
     }
   };
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
   return (
     <div id="page">
       <div
@@ -56,16 +45,18 @@ const Health = () => {
         }`}
       >
         <h1 className="titlePass">Password Strength Check</h1>
-        <div className="inputBox">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="password"
-            id="myPassword"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <div className="show" onClick={handleTogglePassword}></div>
-        </div>
+
+        <PasswordTextInput
+          type={"password"}
+          defaultLabel={"Password"}
+          onChangeText={(text) => {
+            setPassword(text);
+            checkPasswordStrength(text);
+          }}
+          value={password}
+          style={{ marginBottom: 20 }}
+        />
+
         <div className="strengthMeter"></div>
         <div className="strengthText">
           {password && (

@@ -4,16 +4,16 @@ import { store } from "./logic/redux/store";
 import AppRouter from "./routes/AppRouter";
 import AuthProvider from "./logic/context/auth.context";
 import AlertProvider from "./logic/context/alert.context";
-import PasswordProvider from "./logic/context/password.context";
+import DataProvider from "./logic/context/password.context";
 
 const App = () => {
   return (
     <Provider store={store}>
       <AuthProvider>
         <AlertProvider>
-          <PasswordProvider>
+          <DataProvider>
             <AppRouter />
-          </PasswordProvider>
+          </DataProvider>
         </AlertProvider>
       </AuthProvider>
     </Provider>

@@ -15,12 +15,14 @@ export type authResponse = {
   name: string;
   email: string;
 };
-export type NameDto = {
-  name: string
+export type UpdateProfileDto = {
+  id: string;
+  name: string;
+  email: string;
 };
 
 export type NameResponse = {
-  id: string
-  name: string
-  email: string
-}
+  id: string;
+  name: string;
+  email: string;
+};

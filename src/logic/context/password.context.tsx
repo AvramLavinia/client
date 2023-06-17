@@ -1,24 +1,32 @@
 import React, { createContext, useEffect, useState } from "react";
 import GetAllPasswordsService from "../services/password/getPasswords.service";
+import { UseAppSelector } from "../redux/redux-hooks";
+import { selectAuthValue } from "../redux/slices/auth.slice";
+import GetAllNoticesService from "../services/notice/getAllNotices.service";
 
-export const PasswordContext = createContext(undefined);
+export const DataContext = createContext(undefined);
 
-const PasswordProvider = (props: any) => {
-  const { getAllPasswordsEvent, loading } = GetAllPasswordsService();
+const DataProvider = (props: any) => {
+  const isLogged = UseAppSelector(selectAuthValue).isLogged;
+  const { getAllPasswordsEvent } = GetAllPasswordsService();
+  const { getAllNoticesEvent } = GetAllNoticesService();
 
   useEffect(() => {
     const methode = async () => {
       await getAllPasswordsEvent();
+      await getAllNoticesEvent();
     };
 
-    methode();
-  }, []);
+    if (isLogged) {
+      methode();
+    }
+  }, [isLogged]);
 
   return (
-    <PasswordContext.Provider value={undefined}>
+    <DataContext.Provider value={undefined}>
       {props.children}
-    </PasswordContext.Provider>
+    </DataContext.Provider>
   );
 };
 
-export default PasswordProvider;
+export default DataProvider;

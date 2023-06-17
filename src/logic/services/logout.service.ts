@@ -2,6 +2,8 @@ import React from "react";
 import { UseAppDispatch } from "../redux/redux-hooks";
 import { loggedOut } from "../redux/slices/auth.slice";
 import { deleteUser } from "../redux/slices/user.slice";
+import { resetPassword } from "../redux/slices/password.slice";
+import { resetNotice } from "../redux/slices/notices.slice";
 
 const logoutService = () => {
   const dispatch = UseAppDispatch();
@@ -14,12 +16,10 @@ const logoutService = () => {
     dispatch(loggedOut());
     dispatch(deleteUser());
     dispatch(resetPassword());
+    dispatch(resetNotice());
   };
 
   return { logout };
 };
 
 export default logoutService;
-function resetPassword(): any {
-  throw new Error("Function not implemented.");
-}

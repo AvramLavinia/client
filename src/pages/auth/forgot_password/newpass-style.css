@@ -3,11 +3,11 @@
   align-self: center;
   justify-content: center;
   height: 380px;
-  width: 35%;
   padding-top: 30px;
   border-radius: 60px;
   background-color: rgb(216, 231, 239);
   margin: auto;
+  padding: 20px;
 }
 
 .button4 {

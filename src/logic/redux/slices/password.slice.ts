@@ -38,8 +38,13 @@ export const passwordSlice = createSlice({
   },
 });
 
-export const { setPasswords, deletePassword, updatePassword, addPassword } =
-  passwordSlice.actions;
+export const {
+  setPasswords,
+  deletePassword,
+  updatePassword,
+  addPassword,
+  resetPassword,
+} = passwordSlice.actions;
 export const selectPasswordValue = (state: RootState) => state.password;
 
 export default passwordSlice.reducer;

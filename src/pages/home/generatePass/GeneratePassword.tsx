@@ -3,6 +3,7 @@ import "./generatePass.css";
 import "../../../index.css";
 import { FaFile } from "react-icons/fa";
 import { numbers, lowerCase, upperCase, symbols } from "./characters";
+import TextInput from "../../../components/inputs/TextInput";
 
 const GeneratePassword = () => {
   const [password, setPassword] = useState("");
@@ -68,7 +69,15 @@ const GeneratePassword = () => {
           </div>
           <div className="form-grup">
             <label htmlFor="password-str"> Password Length</label>
-            <input
+
+            <TextInput
+              type={"text"}
+              defaultLabel={"Email"}
+              onChangeText={(text) => setPasswordLength(Number(text))}
+              value={passwordLength}
+              style={{ width: 300 }}
+            />
+            {/* <input
               defaultValue={passwordLength}
               onChange={(e: any) => setPasswordLength(e.target.value)}
               type="number"
@@ -76,7 +85,7 @@ const GeneratePassword = () => {
               name="password-str"
               max={20}
               min={10}
-            ></input>
+            ></input> */}
           </div>
 
           <div className="form-grup">

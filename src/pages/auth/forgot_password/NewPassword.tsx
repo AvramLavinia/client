@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import "./newpass-style.css";
 import "../../../index.css";
-import { UseAppDispatch } from "../../../logic/redux/redux-hooks";
+import {
+  UseAppDispatch,
+  UseAppSelector,
+} from "../../../logic/redux/redux-hooks";
 import forgotPasswordService from "../../../logic/services/forgotPassword.service";
 import PasswordTextInput from "../../../components/inputs/PasswordTextInput";
 import BasicButton from "../../../components/buttons/BasicButton";
 import { setAlert } from "../../../logic/redux/slices/alert.slice";
 import { useSearchParams } from "react-router-dom";
+import { selectAuthValue } from "../../../logic/redux/slices/auth.slice";
 
 const NewPassword = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const token = searchParams.get("token");
+  const auth = UseAppSelector(selectAuthValue);
+  const token = auth.isLogged ? auth.accessToken : searchParams.get("token");
 
   const dispatch = UseAppDispatch();
   const [password, setPassword] = useState<string>("");
@@ -71,7 +76,7 @@ const NewPassword = () => {
 
           <BasicButton
             style={{ marginTop: 30 }}
-            title={"Send email"}
+            title={"Change Password"}
             onClick={async () => await handleChangeNewPassword()}
             loading={loading}
           />
